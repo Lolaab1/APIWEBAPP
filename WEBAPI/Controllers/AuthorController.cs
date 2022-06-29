@@ -38,52 +38,64 @@ namespace WEBAPI.Controllers
         [HttpPost]
         public IActionResult AddAuthor(Author NewAuthor)
         {
-            if(string.IsNullOrWhiteSpace(NewAuthor.AuthorName))
-            {
-                return BadRequest("Invalid Empty Author Name");
-            }
-
             var CurAuthor = Authors.Where(x => x.AuthorId == NewAuthor.AuthorId).SingleOrDefault();
 
             if (CurAuthor != null)
                 return Conflict("Duplicate in Author Id");
 
+            if (string.IsNullOrWhiteSpace(NewAuthor.AuthorName))
+            {
+                return BadRequest("Invalid Empty Author Name");
+            }
+
+            if (string.IsNullOrWhiteSpace(NewAuthor.AuthorLocation))
+            {
+                return BadRequest("Invalid Empty Author Location");
+            }
+
+
+
             Authors.Add(NewAuthor);
-            //return Ok();
-            return CreatedAtAction("GetAuthorByID",new { Id=NewAuthor.AuthorId },NewAuthor);
+            return Ok("Add Successfully");
+           // return CreatedAtAction("GetAuthorByID",new { Id=NewAuthor.AuthorId },NewAuthor);
         }
 
         [HttpPut]
         public IActionResult UpdateAuhor(Author updateauthor)
         {
-            if(string.IsNullOrWhiteSpace(updateauthor.AuthorName))
-            {
-                return BadRequest("Invalid Empty Author Name");
-            }
-
             var CurAuthor = Authors.Where(x => x.AuthorId == updateauthor.AuthorId).SingleOrDefault();
 
-            if(CurAuthor==null)
+            if (CurAuthor == null)
             {
                 return NotFound("Invalid Author");
             }
 
+            if (string.IsNullOrWhiteSpace(updateauthor.AuthorName))
+            {
+                return BadRequest("Invalid Empty Author Name");
+            }
+
+
+
             CurAuthor.AuthorName = updateauthor.AuthorName;
             CurAuthor.AuthorLocation = updateauthor.AuthorLocation;
-
-            return NoContent();
+            return Ok("Update Successfully");
+            //return NoContent();
         }
 
         [HttpDelete("{Id}")]
 
         public IActionResult DeleteAuthor(int Id)
         {
-            var CurAuthor = Authors.Where(x => x.AuthorId == Id).FirstOrDefault();
+            var CurAuthor = Authors.Where(x => x.AuthorId == Id).SingleOrDefault();
 
             if (CurAuthor == null)
                 return NotFound("Invalid Author");
+
+            if (BookController.Booklist.Any(x => x.AuthorId == Id))
+                return BadRequest("this Author has Dependances");
             Authors.Remove(CurAuthor);
-            return Ok(CurAuthor);
+            return Ok("Deleted Successfully");
         }
 
     }

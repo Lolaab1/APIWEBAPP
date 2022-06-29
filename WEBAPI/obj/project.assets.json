@@ -6069,19 +6069,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\MC\\.nuget\\packages\\": {}
+    "C:\\Users\\mahammod\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MC\\Desktop\\Tharwat\\WEBAPI\\WEBAPI.csproj",
+      "projectUniqueName": "C:\\Users\\mahammod\\Desktop\\OlaApplication\\APIWEBAPP\\WEBAPI\\WEBAPI.csproj",
       "projectName": "WEBAPI",
-      "projectPath": "C:\\Users\\MC\\Desktop\\Tharwat\\WEBAPI\\WEBAPI.csproj",
-      "packagesPath": "C:\\Users\\MC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MC\\Desktop\\Tharwat\\WEBAPI\\obj\\",
+      "projectPath": "C:\\Users\\mahammod\\Desktop\\OlaApplication\\APIWEBAPP\\WEBAPI\\WEBAPI.csproj",
+      "packagesPath": "C:\\Users\\mahammod\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mahammod\\Desktop\\OlaApplication\\APIWEBAPP\\WEBAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\MC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mahammod\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
